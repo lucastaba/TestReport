@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body class="body"> 
+        <div class="main">
+            <div class="header-holder" >
+                <h1>Test 1</h1>
+            </div>
+            <div class="description-holder">
+                <h2>How to test</h2></h1>
+                <ul>
+                    <li>Press "Start Test" to run tests</li>
+                    <li>Test result will be displayed on table</li>
+                    <li>Test result will be availabe on QRCode</li>
+                </ul>
+            </div>
+            <div class="button-holder">
+                <button id="start" onclick="DoTest()">Start Test</button>
+            </div>
+            <div class="result-holder">
+                <div class="code">
+                    <div id="qrcode">
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="qrcode.js"></script>
+    <script src="qrcode.min.js"></script>
+    <script>
+        var qrcode = new QRCode("qrcode",{
+                width: 300,
+                height: 300,
+                correctLevel : QRCode.CorrectLevel.L
+        });
+
+        function DoTest()
+        {
+            var result = ExecuteTest();
+            qrcode.clear();
+            qrcode.makeCode(JSON.stringify(result));
+        }
+    </script>
+</html>

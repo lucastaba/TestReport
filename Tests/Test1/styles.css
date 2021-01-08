@@ -1,0 +1,34 @@
+.body {
+    background-color: blue;
+}
+
+.main {
+    color: white;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.header-holder {
+    text-align: center;
+}
+
+.description-holder {
+    margin: 0 auto;
+}
+
+.button-holder {
+    text-align: center;
+}
+
+.result-holder {
+    padding: 10px 10px;
+    text-align: center;
+}
+
+.code {
+    border: 1px solid green;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
