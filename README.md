@@ -12,9 +12,10 @@ To run this tools, you must:
 
 ## Know dependencies
 List of installed packeges
-- opencv
-- pyzbar
-- imagemagick
+- python 3
+- opencv (pip install opencv-python)
+- pyzbar (pip install pyzbar)
+- imagemagick [download-link](https://imagemagick.org/index.php)
 
 ## Trobleshouting
 ---

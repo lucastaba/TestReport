@@ -2,12 +2,16 @@
 
 GetScreenShot()
 {
-    import -window root ./screenshots/screenshot.png
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        import -window root ./screenshots/screenshot.png
+    else
+        magick convert screenshot: ./screenshots/screenshot.png
+    fi
 }
 
 GetQRCodeData()
 {
-    echo $(python3 ReadQRCode.py ./screenshots/screenshot.png)
+    echo $(py ReadQRCode.py ./screenshots/screenshot.png)
 }
 
 ExecuteTest()
