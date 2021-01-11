@@ -11,7 +11,20 @@ GetScreenShot()
 
 GetQRCodeData()
 {
-    echo $(py ReadQRCode.py ./screenshots/screenshot.png)
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        echo $(python3 ReadQRCode.py ./screenshots/screenshot.png)
+    else
+        echo $(py ReadQRCode.py ./screenshots/screenshot.png)
+    fi
+}
+
+convertJsonToCsv()
+{
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        echo $(python3 convertJsonToCsv.py)
+    else
+        echo $(py convertJsonToCsv.py)
+    fi
 }
 
 ExecuteTest()
@@ -44,6 +57,7 @@ PrintTestResults()
     echo "=========================="
     for value in ${results[@]}; do
         echo $value
+        echo $value > jsonOutput.txt
     done
 }
 
@@ -64,3 +78,4 @@ PrintTestResults
 
 # TODO: parse results array to python function and get CSV file (report)
 # ParseToCSV results
+convertJsonToCsv
