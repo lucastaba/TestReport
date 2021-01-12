@@ -15,13 +15,14 @@ List of installed packeges
 - python 3
 - opencv (pip install opencv-python)
 - pyzbar (pip install pyzbar)
+- pandas (pip install pandas)
 - imagemagick [download-link](https://imagemagick.org/index.php)
 
 ## Trobleshouting
 ---
 After install dependencies and **READ** how to use this tool, and yet it does not work, try:
 
-- Bash script may need execution permisison:
+- On Linux: Bash script may need execution permission:
   - ```$~: chmod +x <file_name.sh>```
 - Use [Google](www.google.com.br) for other issues
 
@@ -33,12 +34,9 @@ On HTML file, tester (or automated script) will press "Start Test". This will ge
 
 Using python opencv and zBar libraries, this tools takes a screenshoot and tries to decode the QRCode. If decoding is possible, test is considered to "PASSED", if not it is tagged with "FAILED".
 
-After test finishes it will return an array with test results.
+After test finishes it will create a CSV file with test results.
 
 ## Future works
 ---
-If prove to be usefull, this tool will be part of berimbau and Jenkins test suit.
+If prove to be useful, this tool will be part of berimbau and Jenkins test suit.
 
-## Todo
----
-- Array to CSV (or another data structure) parser
