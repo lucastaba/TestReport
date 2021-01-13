@@ -68,14 +68,13 @@ results=()
 ExecuteTest 1
 
 # SetupTest1()
-ExecuteTest 2
+# ExecuteTest 2
 
 # SetupTest1()
-ExecuteTest 3
+# ExecuteTest 3
 
 # Print test result
 PrintTestResults
 
-# TODO: parse results array to python function and get CSV file (report)
 # ParseToCSV results
 convertJsonToCsv
