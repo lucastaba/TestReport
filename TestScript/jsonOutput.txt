@@ -1,1 +1,1 @@
-{"Test1":"Failed","tests":[{"Test1.01":"Failed"},{"Test1.02":"Passed"},{"Test1.03":"Passed"}]}
+http://localhost:80/STDGinga?idapp=STD_C_GHApp_001&C21.001=F&C22.001=F&C38.001=F&C38.002=F
