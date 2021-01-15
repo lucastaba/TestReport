@@ -55,7 +55,7 @@ ExecuteTest()
 PrintTestResults()
 {
     echo "=========================="
-    echo "====== Test Results ======"
+    echo "====== Test $1 Results ======"
     echo "=========================="
     for value in ${results[@]}; do
         echo $value > jsonOutput.txt
@@ -76,16 +76,20 @@ ChangeTS(){
 }
 
 StartApplication(){
-    echo "=========================="
+    echo "=============================="
     echo "==== Starting Application ===="
     n=1
     while [ $n -le $testsLength ]
     do
-        ExecuteTest $n
-        sleep 5
         ChangeTS
         sleep 70
+        ExecuteTest $n
+        sleep 5
+        PrintTestResults $n
+        convertJsonToCsv # fazer ele acumular os testes anteriores
     done
+    echo "===== End of Application ====="
+    echo "=============================="
 }
 
 max_loop=5
@@ -96,7 +100,7 @@ results=()
 StartApplication
 
 # Print test result
-PrintTestResults
+# PrintTestResults
 
 # ParseToCSV results
-convertJsonToCsv
+# convertJsonToCsv
