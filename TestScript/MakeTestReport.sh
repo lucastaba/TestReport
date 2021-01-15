@@ -33,10 +33,12 @@ ExecuteTest()
     echo "==== Test $1 ===="
     echo "=========================="
 
+    echo berimbau -s "vk_send 36" #enter KEY
+    sleep 70
+    GetScreenShot
     n=1
     while [ $n -le $max_loop ]
     do
-        GetScreenShot
         result=$(GetQRCodeData)
         if [[ $result == "" ]]; then
             echo "FAILED Loop [$n/$max_loop]"
@@ -56,22 +58,42 @@ PrintTestResults()
     echo "====== Test Results ======"
     echo "=========================="
     for value in ${results[@]}; do
-        echo $value
         echo $value > jsonOutput.txt
+    done
+    GetFormatedResults
+    echo "Test ended"
+}
+
+GetFormatedResults(){
+tmpCsv="$(<jsonOutput.csv)"
+for tmpValue in ${tmpCsv[@]}; do
+    echo $tmpValue
+done
+}
+
+ChangeTS(){
+
+}
+
+StartApplication(){
+    echo "=========================="
+    echo "==== Starting Application ===="
+    n=1
+    while [ $n -le $testsLength ]
+    do
+        ExecuteTest $n
+        sleep 5
+        ChangeTS
+        sleep 70
     done
 }
 
 max_loop=5
+testsLength=3 #! quantity of tests
 results=()
 
-# SetupTest1()
-ExecuteTest 1
-
-# SetupTest1()
-# ExecuteTest 2
-
-# SetupTest1()
-# ExecuteTest 3
+# Start the test
+StartApplication
 
 # Print test result
 PrintTestResults

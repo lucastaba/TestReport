@@ -14,7 +14,11 @@ with open(dirName +'jsonOutput.csv', 'w', newline='') as file:
     writer.writerow([title])
     #print("Title: ",title)
     for strin in x:
-        if strin.find('=F') != -1:
+        if strin.find('\n') != -1:
+            strin = strin.replace('\n','')
+        if strin.find('http') != -1:
+            pass
+        elif strin.find('=F') != -1:
             strin = strin.replace('=F','')
             writer.writerow([strin,'Failed'])
             #print(strin + ',Failed')
@@ -26,4 +30,5 @@ with open(dirName +'jsonOutput.csv', 'w', newline='') as file:
             writer.writerow([strin,'Undefined'])
             #print(strin + ',Undefined')
             pass
+        # print(strin)
 file.close()
