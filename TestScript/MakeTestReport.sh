@@ -75,18 +75,34 @@ ChangeTS(){
 
 }
 
+ChangeApp(){
+#  abre o applist, muda o app e inicia
+echo "Changing Application"
+    echo berimbau -s "vk_send XF86Apps" #Open AppList
+    sleep 15
+for programNumber in $1; do #! validar esse for
+    echo berimbau -s "vk_send 40" #Down key
+    sleep 5
+done
+    echo berimbau -s "vk_send 36" #start a new APP, enter Key
+    sleep 5
+}
+
 StartApplication(){
     echo "=============================="
     echo "==== Starting Application ===="
     n=1
     while [ $n -le $testsLength ]
     do
-        ChangeTS
+        ChangeApp $n
         sleep 70
         ExecuteTest $n
-        sleep 5
+        sleep 3
         PrintTestResults $n
-        convertJsonToCsv # fazer ele acumular os testes anteriores
+        sleep 3
+        convertJsonToCsv # needs upgrade, to store all tests, not only the last one
+        sleep 3
+        # ChangeTS
     done
     echo "===== End of Application ====="
     echo "=============================="
